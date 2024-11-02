@@ -1,0 +1,125 @@
+<head>
+    <script src="data.js"></script>
+    <script src="i-ching.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/chota">
+    <link rel="stylesheet" href="./i-ching.css">
+</head>
+<body>
+    <div class="i-ching">
+        <div class="intro" id="intro">
+            <div class="row">
+                <div class="col">
+                    <h1>Welcome to the I Ching</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Focus on your concern, then hit "Throw Sticks" to continue.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button id="throw" type="button" class="button" onclick="get_monogram('throw')" count=0>Throw Sticks</button>
+                </div>
+            </div>
+            <div class="row monogram-item">
+                <div class="col-6 text-right">
+                    <h3 class="monogram" throw="0"></h3>
+                </div>
+                <div class="col-6 text-left">
+                    <p class="monogram-description"></p>
+                </div>
+            </div>
+            <div class="row monogram-item">
+                <div class="col-6 text-right">
+                    <h3 class="monogram" throw="0"></h3>
+                </div>
+                <div class="col-6 text-left">
+                    <p class="monogram-description"></p>
+                </div>
+            </div>
+            <div class="row monogram-item">
+                <div class="col-6 text-right">
+                    <h3 class="monogram" throw="0"></h3>
+                </div>
+                <div class="col-6 text-left">
+                    <p class="monogram-description"></p>
+                </div>
+            </div>
+            <div class="row monogram-item">
+                <div class="col-6 text-right">
+                    <h3 class="monogram" throw="0"></h3>
+                </div>
+                <div class="col-6 text-left">
+                    <p class="monogram-description"></p>
+                </div>
+            </div>
+            <div class="row monogram-item">
+                <div class="col-6 text-right">
+                    <h3 class="monogram" throw="0"></h3>
+                </div>
+                <div class="col-6 text-left">
+                    <p class="monogram-description"></p>
+                </div>
+            </div>
+            <div class="row monogram-item">
+                <div class="col-6 text-right">
+                    <h3 class="monogram" throw="0"></h3>
+                </div>
+                <div class="col-6 text-left">
+                    <p class="monogram-description"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="hexagram-preview">
+            <div class="col fadable hexagram" onclick="">
+                <h2 class="symbol"></h2>
+                <h2 class="name"></h2>
+            </div>
+            <div class="col fadable transition-text">
+                <h2>Transitioning to</h2>
+            </div>
+            <div class="col fadable hexagram" onclick="">
+                <h2 class="symbol"></h2>
+                <h2 class="name"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col fadable" id="instruction">
+                <p>Click a hexagram to view reading</p>
+            </div>
+        </div>
+        <div class="row flex-container">
+            <div class="col hexagram-detail fadable" id="hexagram">
+                <h2 class="symbol"></h2>
+                <h2 class="name"></h2>
+                <p class="judgment"></p>
+                <h2>Image</h2>
+                <div class="">
+                    <div class="row trigram flex-trigram-item">
+                        <div class="col-5">
+                            <h3 class="figure"></h3>
+                        </div>
+                        <div class="col">
+                            <p class="image_and_attributes"></p>
+                        </div>
+                    </div>
+                    <div class="row trigram flex-trigram-item">
+                        <div class="col-5">
+                            <h3 class="figure"></h3>
+                        </div>
+                        <div class="col">
+                            <p class="image_and_attributes"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="image"></p>
+                <div>
+                    <h2>Lines</h2>
+                    <div class="lines"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

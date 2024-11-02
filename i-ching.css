@@ -1,0 +1,93 @@
+.i-ching {
+    max-width: 750px;
+}
+.intro {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.monogram-item {
+    align-items: center;
+    margin: 0px;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.fadable {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.symbol {
+    text-align: center;
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+    font-size: 64px;
+    margin-bottom: 0px;
+    line-height: 1;
+}
+.name {
+    margin-top: 0px;
+}
+.hexagram {
+    align-items: center;
+    text-align: center;
+    min-width: 250px;
+    max-width: 250px;
+}
+.transition-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.monogram {
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+    font-size: 64px;
+    margin: 0px;
+    line-height: .5;
+    justify-content: center;
+}
+.monogram-description {
+    margin: 0px;
+    line-height: 1;
+    align-content: center;
+}
+.hexagram-detail {
+    align-items: center;
+    text-align: center;
+}
+.trigram {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.trigram .figure {
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+    font-size: 32px;
+    margin: 5px;
+    line-height: 1;
+    text-align: right;
+}
+.trigram .image_and_attributes {
+    margin: 5px;
+    line-height: 1;
+    text-align: left;
+}
+.visible {
+    opacity: 1;
+}
+#instruction {
+    text-align: center;
+}
