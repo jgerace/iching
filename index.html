@@ -4,7 +4,56 @@
     <script src="data.js"></script>
     <script src="i-ching.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./i-ching.css">
+    <style>
+        .intro {
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        .monogram-item {
+            line-height: .5;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fadable {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .symbol {
+            font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+            font-size: 64px;
+        }
+        .hexagram {
+            min-width: 250px;
+            max-width: 250px;
+        }
+        .monogram {
+            font-size: 64px;
+            margin: 0;
+        }
+        .monogram-description {
+            margin: 0px;
+            line-height: 1;
+        }
+        .image_and_attributes {
+            margin: 5px;
+            line-height: 1;
+            align-items: center;
+            text-align: left;
+        }
+        .visible {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -20,7 +69,7 @@
     </nav>
     <div class="i-ching row justify-content-center">
         <div class="col-8">
-        <div class="intro" id="intro">
+        <div class="intro align-items-center justify-content-center text-center" id="intro">
             <div class="row">
                 <div class="col">
                     <h1>Welcome to the I Ching</h1>
@@ -36,107 +85,112 @@
                     <button id="throw" type="button" class="button" onclick="get_monogram('throw')" count=0>Throw Sticks</button>
                 </div>
             </div>
-            <div class="row monogram-item">
+            <div class="row monogram-item d-flex align-items-center">
                 <div class="col-6 text-end">
-                    <h3 class="monogram" throw="0"></h3>
+                    <p class="monogram" throw="0"></p>
                 </div>
                 <div class="col-6 text-start">
                     <p class="monogram-description"></p>
                 </div>
             </div>
-            <div class="row monogram-item">
+            <div class="row monogram-item d-flex align-items-center">
                 <div class="col-6 text-end">
-                    <h3 class="monogram" throw="0"></h3>
+                    <p class="monogram" throw="0"></p>
                 </div>
                 <div class="col-6 text-start">
                     <p class="monogram-description"></p>
                 </div>
             </div>
-            <div class="row monogram-item">
+            <div class="row monogram-item d-flex align-items-center">
                 <div class="col-6 text-end">
-                    <h3 class="monogram" throw="0"></h3>
+                    <p class="monogram" throw="0"></p>
                 </div>
                 <div class="col-6 text-start">
                     <p class="monogram-description"></p>
                 </div>
             </div>
-            <div class="row monogram-item">
+            <div class="row monogram-item d-flex align-items-center">
                 <div class="col-6 text-end">
-                    <h3 class="monogram" throw="0"></h3>
+                    <p class="monogram" throw="0"></p>
                 </div>
                 <div class="col-6 text-start">
                     <p class="monogram-description"></p>
                 </div>
             </div>
-            <div class="row monogram-item">
+            <div class="row monogram-item d-flex align-items-center">
                 <div class="col-6 text-end">
-                    <h3 class="monogram" throw="0"></h3>
+                    <p class="monogram" throw="0"></p>
                 </div>
                 <div class="col-6 text-start">
                     <p class="monogram-description"></p>
                 </div>
             </div>
-            <div class="row monogram-item">
+            <div class="row monogram-item d-flex align-items-center">
                 <div class="col-6 text-end">
-                    <h3 class="monogram" throw="0"></h3>
+                    <p class="monogram" throw="0"></p>
                 </div>
                 <div class="col-6 text-start">
                     <p class="monogram-description"></p>
                 </div>
             </div>
         </div>
-        <div class="row" id="hexagram-preview">
-            <div class="col fadable hexagram" onclick="">
+        <div class="row text-center align-items-center" id="hexagram-preview">
+            <div class="col fadable hexagram align-text-top" onclick="">
                 <h2 class="symbol"></h2>
                 <h2 class="name"></h2>
             </div>
             <div class="col fadable transition-text">
                 <h2>Transitioning to</h2>
             </div>
-            <div class="col fadable hexagram" onclick="">
+            <div class="col fadable hexagram align-text-top" onclick="">
                 <h2 class="symbol"></h2>
                 <h2 class="name"></h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
             <div class="col fadable" id="instruction">
                 <p>Click a hexagram to view reading</p>
             </div>
         </div>
-        <div class="row flex-container">
-            <div class="col hexagram-detail fadable" id="hexagram">
-                <h2 class="symbol"></h2>
-                <h2 class="name"></h2>
-                <p class="judgment"></p>
-                <h2>Image</h2>
-                <div class="">
-                    <div class="row trigram flex-trigram-item">
-                        <div class="col-5 text-end">
-                            <h3 class="figure"></h3>
-                        </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col hexagram-detail fadable" id="hexagram">
+                    <h2 class="symbol"></h2>
+                    <h2 class="name"></h2>
+                    <p class="judgment"></p>
+                    <h2>Image</h2>
+                    <div class="row">
                         <div class="col">
-                            <p class="image_and_attributes"></p>
+                            <div class="row trigram d-flex align-items-center">
+                                <div class="col-5 text-end">
+                                    <h3 class="figure"></h3>
+                                </div>
+                                <div class="col text-start">
+                                    <p class="image_and_attributes"></p>
+                                </div>
+                            </div>
+                            <div class="row trigram d-flex align-items-center">
+                                <div class="col-5 text-end">
+                                    <h3 class="figure"></h3>
+                                </div>
+                                <div class="col text-start">
+                                    <p class="image_and_attributes"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row trigram flex-trigram-item">
-                        <div class="col-5 text-end">
-                            <h3 class="figure"></h3>
-                        </div>
-                        <div class="col">
-                            <p class="image_and_attributes"></p>
-                        </div>
-                    </div>
-                </div>
 
-                <p class="image"></p>
-                <div>
-                    <h2>Lines</h2>
-                    <div class="lines"></div>
+                    <p class="image"></p>
+                    <div>
+                        <h2>Lines</h2>
+                        <div class="lines"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.2/dist/bootstrap-table.min.js"></script>
