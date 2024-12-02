@@ -218,3 +218,59 @@ function clear_children(element) {
         element.removeChild(element.lastChild);
     }
 }
+
+function display_hexagram_table() {
+    table_elem = document.getElementById("hexagram-table");
+    rows = table_elem.getElementsByClassName("hexagram-row");
+
+    for (let row_idx = 0; row_idx < rows.length; row_idx++) {
+        cols = rows[row_idx].getElementsByClassName("hexagram-cell");
+
+        for (let col_idx = 0; col_idx < cols.length; col_idx++) {
+            hexagram_data = data["text"][hexagram_map[row_idx][col_idx]];
+
+            symbol_elem = cols[col_idx].getElementsByClassName("symbol")[0];
+            symbol_elem.innerHTML = hexagram_data["hexagram_unicode"];
+
+            name_elem = cols[col_idx].getElementsByClassName("name")[0];
+            name_elem.innerHTML = hexagram_data["number"] + ". " + hexagram_data["name"];
+
+            cols[col_idx].attributes["onclick"].value = "display_hexagram_info("+hexagram_map[row_idx][col_idx]+")";
+        }
+    }
+}
+
+// TODO: DRY this up
+function display_hexagram_info(hexagram_number) {
+    hexagram_data = data["text"][String(hexagram_number)];
+    hexagram_elem = document.getElementById("hexagram");
+    
+    symbol_elem = hexagram_elem.getElementsByClassName("symbol")[0];
+    symbol_elem.innerHTML = hexagram_data["hexagram_unicode"];
+    
+    name_elem = hexagram_elem.getElementsByClassName("name")[0];
+    name_elem.innerHTML = hexagram_data["number"] + ". " + hexagram_data["name"];
+
+    judgment_elem = hexagram_elem.getElementsByClassName("judgment")[0];
+    judgment_elem.innerHTML = split_text(hexagram_data["presentation"]);
+
+    trigram_elems = hexagram_elem.getElementsByClassName("trigram");
+    show_trigram_data(trigram_elems[0], data["trigrams"][hexagram_data["trigram_above"]])
+    show_trigram_data(trigram_elems[1], data["trigrams"][hexagram_data["trigram_below"]])
+
+    image_elem = hexagram_elem.getElementsByClassName("image")[0];
+    image_elem.innerHTML = split_text(hexagram_data["image"]);
+
+    lines = hexagram_data["lines"];
+    lines_elem = hexagram_elem.getElementsByClassName("lines")[0];
+    clear_children(lines_elem);
+    for (let ii = 0; ii < lines.length; ii++) {
+        let index = document.createElement("p");
+        index.innerHTML = `<b>${String(ii+1)}</b>`;
+        lines_elem.appendChild(index);
+        let child = document.createElement("p");
+
+        child.innerHTML = split_text(lines[ii]);
+        lines_elem.appendChild(child);
+    }
+}
